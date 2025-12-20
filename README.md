@@ -1,0 +1,1 @@
+I got mad that a other reverse singing app sold my data so i made one myself
