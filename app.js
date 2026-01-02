@@ -8,21 +8,37 @@ function sleep(ms) {
 const audioCtx = new AudioContext();
 if (navigator.mediaDevices) {
   navigator.mediaDevices.getUserMedia({"audio": true}).then((stream) => {
+    const stopButton = document.getElementById("stop")
+    const startButton = document.getElementById("start")
+    const recordingtext = document.getElementById("recordingtext")
     const mediaRecorder = new MediaRecorder(stream);
     let chunks = [];
     mediaRecorder.ondataavailable = (e) => {
       chunks.push(e.data);
     };
     mediaRecorder.onstop = (e) => {
-      const audio = document.createElement("audio")
-      const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
-      chunks = [];
-      const audioURL = window.URL.createObjectURL(blob);
-      audio.src = audioURL;
+      //const audio = document.createElement("audio")
+      const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" })
+      chunks = []
+      const audioURL = window.URL.createObjectURL(blob)
+      console.log(audioURL)
+      window.open(audioURL, '_blank').focus()
+      
+      //audio.src = audioURL;
+
   };
-    //mediaRecorder.start()
-    //await sleep(2000)
-    //mediaRecorder.stop()
+    startButton.addEventListener("click", (event)=> {
+      mediaRecorder.start()
+      startButton.disabled = true
+      stopButton.disabled = false
+      recordingtext.innerText = "Recording"
+    })
+    stopButton.addEventListener("click", (event)=> {
+      mediaRecorder.stop()
+      startButton.disabled = false
+      stopButton.disabled = true
+      recordingtext.innerText = "Not recording"
+    })
     
   }).catch((err) => {
     // browser unable to access microphone
