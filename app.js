@@ -11,6 +11,7 @@ if (navigator.mediaDevices) {
     const stopButton = document.getElementById("stop")
     const startButton = document.getElementById("start")
     const recordingtext = document.getElementById("recordingtext")
+    const blobLink = document.getElementById("bloblink")
     const mediaRecorder = new MediaRecorder(stream);
     let chunks = [];
     mediaRecorder.ondataavailable = (e) => {
@@ -22,7 +23,8 @@ if (navigator.mediaDevices) {
       chunks = []
       const audioURL = window.URL.createObjectURL(blob)
       console.log(audioURL)
-      window.open(audioURL, '_blank').focus()
+      blobLink.href = audioURL
+      //window.open(audioURL, '_blank').focus()
       
       //audio.src = audioURL;
 
