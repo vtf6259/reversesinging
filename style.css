@@ -36,3 +36,15 @@
   padding: 1rem;
   width: calc(50% - 0.25rem);
 }
+#playbutton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#playbutton button {
+  font-size: 1rem;
+  padding: 1rem;
+  width: 100%;
+  background-color: green;
+}
