@@ -11,7 +11,6 @@ if (navigator.mediaDevices) {
     const stopButton = document.getElementById("stop")
     const startButton = document.getElementById("start")
     const recordingtext = document.getElementById("recordingtext")
-    const blobLink = document.getElementById("bloblink")
     let audioblob = ""
     const playButton = document.getElementById("play")
     const mediaRecorder = new MediaRecorder(stream);
@@ -20,15 +19,12 @@ if (navigator.mediaDevices) {
       chunks.push(e.data);
     };
     mediaRecorder.onstop = (e) => {
-      //const audio = document.createElement("audio")
+
       const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" })
       chunks = []
       const audioURL = window.URL.createObjectURL(blob)
       console.log(audioURL)
       audioblob = audioURL
-      //window.open(audioURL, '_blank').focus()
-      
-      //audio.src = audioURL;
 
   };
     startButton.addEventListener("click", (event)=> {
