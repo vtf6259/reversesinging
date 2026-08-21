@@ -1,1 +1,1 @@
-# MOVED TO CODEBERG https://codeberg.org/vtf6259/reversesinging
+I got mad that a other reverse singing app sold my data so i made one myself

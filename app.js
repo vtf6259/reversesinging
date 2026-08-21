@@ -6,7 +6,7 @@ function sleep(ms) {
   setTimeout(null, ms)
 }
 const audioCtx = new AudioContext();
-/*if (navigator.mediaDevices) {
+if (navigator.mediaDevices) {
   navigator.mediaDevices.getUserMedia({"audio": true}).then((stream) => {
     const stopButton = document.getElementById("stop")
     const startButton = document.getElementById("start")
@@ -70,4 +70,3 @@ const audioCtx = new AudioContext();
   // (update your browser)
   window.location.replace("/update.html")
 }
-*/
